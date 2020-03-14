@@ -11,3 +11,4 @@ This script will produce relevant summary of the choosen PDF file. First, it wil
 2. Enter your PDF file path
 3. Enter your query. Note that the query can be more than two words
 4. To exit, press CTRL+C
+![til](instruction.gif)
