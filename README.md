@@ -7,6 +7,7 @@ This script will produce relevant summary of the choosen PDF file. First, it wil
 - pdftk on Ubuntu
 
 ## How to Use?
-<p align="center">
-<img src="https://media.giphy.com/media/KzibdLMtoPt6lUN7ai/giphy.gif" width="500"/>
-</p>
+1. Type python search_engine.py
+2. Enter your PDF file path
+3. Enter your query. Note that the query can be more than two words
+4. To exit, press CTRL+C
