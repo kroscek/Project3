@@ -14,5 +14,5 @@ First, it will strip-off all the PDF pages into a single page. This single page 
 2. Enter your PDF file path
 3. Enter your query. Note that the query can be more than two words
 4. To exit, press CTRL+C
-![til](instruction.gif)
+![til](Peek 2020-03-24 15-17.gif)
 
