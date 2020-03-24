@@ -9,7 +9,41 @@ from tkinter.ttk import *
 import io
 import shutil
 
+class Textbox(Text):
+    # create the google image
+    tkimg = None
 
+    def __init__(self, parent, *args, **kwargs):
+        super().__init__(parent, *args, **kwargs)
+        if self.tkimg is None:
+            self.tkimg = PhotoImage(file='32px-google_-g-_logo-svg.png')
+        self.insert_placeholder()
+        self.bind('<FocusIn>', self.on_focus_in)
+        self.bind('<FocusOut>', self.on_focus_out)
+
+    def insert_placeholder(self):
+        ''' insert the placeholder into text box '''
+        lbl = Label(self, text='Type your query here!!', image=self.tkimg, compound='left',
+                       font=(None,10),background="white")
+        self.window_create('end', window=lbl)
+        self.placeholder = self.window_names()[0]
+
+    def on_focus_in(self, event):
+        try:
+            # check whether the placeholder exists
+            item = self.window_cget(1.0, 'window')
+            if item == self.placeholder:
+                # remove the placeholder
+                self.delete(1.0, 'end')
+        except:
+            # placeholder not found, do nothing
+            pass
+
+    def on_focus_out(self, event):
+        if self.get(1.0, 'end-1c') == '':
+            # nothing input, so add back the placeholder
+            self.insert_placeholder()
+            
 class GUI:
     def __init__(self, root):
         self.root = root
@@ -35,9 +69,9 @@ class GUI:
         self.label = Label(self.root)
         self.label.grid(row=1,column=2)
         
-        self.llll=Label(self.root, text="3. Input your Query:", font = ("Arial 12 bold"))
+        self.llll=Label(self.root, text="3. Query:", font = ("Arial 12 bold"))
         self.llll.grid(row=2, column=0, padx=5, pady = 0, sticky="W")
-        self.query=Text(self.root, height=1, width=60, padx=5, bg='white',
+        self.query=Textbox(self.root, height=1, width=60, padx=5, bg='white',
                                      borderwidth=4, highlightthickness=0,font = "Arial 12 bold",
                                      relief='ridge')
         self.query.grid(row=2,column=1,columnspan=2)
